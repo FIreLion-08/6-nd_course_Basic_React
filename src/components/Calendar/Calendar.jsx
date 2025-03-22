@@ -1,6 +1,6 @@
 export const Calendar = () => {
   return (
-    <div className="pop-new-card__calendar calendar">
+      <div className="pop-new-card__calendar calendar">
       <p className="calendar__ttl subttl">Даты</p>
       <div className="calendar__block">
         <div className="calendar__nav">
@@ -73,10 +73,16 @@ export const Calendar = () => {
             <div className="calendar__cell _cell-day">28</div>
             <div className="calendar__cell _cell-day">29</div>
             <div className="calendar__cell _cell-day _weekend">30</div>
-            <div className="calendar__cell _other-month _weekend">1</div>
+            <div className="calendar__cell _other-month _weekend">
+              1
+            </div>
           </div>
         </div>
-        <input type="hidden" id="datepick_value" defaultValue="08.09.2023" />
+        <input
+          type="hidden"
+          id="datepick_value"
+          defaultValue="08.09.2023"
+        />
         <div className="calendar__period">
           <p className="calendar__p date-end">
             Выберите срок исполнения <span className="date-control" />.
@@ -84,5 +90,5 @@ export const Calendar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
