@@ -1,4 +1,4 @@
-export const Card = ({ NameLesson, CardThemeColor, CardTitle }) => {
+export const Card = ({ NameLesson, CardThemeColor, CardTitle, cardDate }) => {
   return (
     <div className="cards__item">
       <div className="cards__card card">
@@ -47,10 +47,10 @@ export const Card = ({ NameLesson, CardThemeColor, CardTitle }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>30.10.23</p>
+            <p>{cardDate}</p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

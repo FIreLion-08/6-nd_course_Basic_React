@@ -1,105 +1,39 @@
-import { Column } from '../Column/Column.jsx'
+import {Column} from '../Column/Column.jsx';
 
-export const Main = () => {
-  const tasks = [
-    {
-      ColumnName: 'Без статуса',
-      Lesson: 'Web design',
-      ThemeColor: '_orange',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Без статуса',
-      Lesson: 'Research',
-      ThemeColor: '_green',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Без статуса',
-      Lesson: 'Web design',
-      ThemeColor: '_orange',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Без статуса',
-      Lesson: 'Copywriting',
-      ThemeColor: '_purple',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Без статуса',
-      Lesson: 'Web design',
-      ThemeColor: '_orange',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Нужно сделать',
-      Lesson: 'Research',
-      ThemeColor: '_green',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'В работе',
-      Lesson: 'Copywriting',
-      ThemeColor: '_purple',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'В работе',
-      Lesson: 'Copywriting',
-      ThemeColor: '_purple',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'В работе',
-      Lesson: 'Web design',
-      ThemeColor: '_orange',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Тестирование',
-      Lesson: 'Research',
-      ThemeColor: '_green',
-      Title: 'Новая задача',
-    },
-    {
-      ColumnName: 'Готово',
-      Lesson: 'Research',
-      ThemeColor: '_green',
-      Title: 'Новая задача',
-    },
-  ]
-
-  return (
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">
-            <Column
-              ColumnName={'Без статуса'}
-              cards={tasks.filter((task) => task.ColumnName === 'Без статуса')}
-            />
-            <Column
-              ColumnName={'Нужно сделать'}
-              cards={tasks.filter(
-                (task) => task.ColumnName === 'Нужно сделать',
-              )}
-            />
-            <Column
-              ColumnName={'В работе'}
-              cards={tasks.filter((task) => task.ColumnName === 'В работе')}
-            />
-            <Column
-              ColumnName={'Тестирование'}
-              cards={tasks.filter((task) => task.ColumnName === 'Тестирование')}
-            />
-            <Column
-              ColumnName={'Готово'}
-              cards={tasks.filter((task) => task.ColumnName === 'Готово')}
-            />
+export const Main = ({cards}) => {
+    return (
+        <main className="main">
+          <div className="container">
+            <div className="main__block">
+              <div className="main__content">
+                <Column status={"Без статуса"}
+                  cards = {
+                    cards.filter((task) => task.status === "Без статуса")
+                  }
+                />
+                <Column status={"Нужно сделать"}
+                  cards = {
+                    cards.filter((task) => task.status === "Нужно сделать")
+                  }
+                />
+                <Column status={"В работе"}
+                  cards = {
+                    cards.filter((task) => task.status === "В работе")
+                  }
+                />
+                <Column status={"Тестирование"}
+                  cards = {
+                    cards.filter((task) => task.status === "Тестирование")
+                  }
+                />
+                <Column status={"Готово"}
+                  cards = {
+                    cards.filter((task) => task.status === "Готово")
+                  }
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </main>
-  )
+        </main>
+    )
 }

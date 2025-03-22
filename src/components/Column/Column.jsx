@@ -1,23 +1,24 @@
-import { Card } from '../Card/Card'
+import { Card } from "../Card/Card"
 
-export const Column = ({ ColumnName, cards }) => {
-  // const =cards;
-
-  return (
-    <div className="main__column column">
-      <div className="column__title">
-        <p>{ColumnName}</p>
-      </div>
-      <div className="cards">
-        {cards.map((card, index) => (
-          <Card
-            NameLesson={card.Lesson}
-            CardThemeColor={card.ThemeColor}
-            CardTitle={card.Title}
-            key={index}
-          />
-        ))}
-      </div>
-    </div>
-  )
+export const  Column = ({status, cards}) => {
+    return (
+        <div className="main__column column">
+          <div className="column__title">
+            <p>{status}</p>
+          </div>
+          <div className="cards">
+            {cards.map(
+              (card, id) => (
+                <Card
+                  key={id}
+                  NameLesson={card.theme}
+                  CardThemeColor={card.ThemeColor}
+                  CardTitle={card.title}
+                  cardDate={card.date}
+                />
+              )
+            )}
+          </div>
+        </div>
+    )
 }
