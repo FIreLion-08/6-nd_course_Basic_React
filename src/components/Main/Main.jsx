@@ -1,103 +1,34 @@
 import {Column} from '../Column/Column.jsx';
 
-export const Main = () => {
-  const tasks = [
-    {
-      ColumnName: "Без статуса",
-      Lesson: "Web design",
-      ThemeColor: "_orange",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Без статуса",
-      Lesson: "Research",
-      ThemeColor: "_green",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Без статуса",
-      Lesson: "Web design",
-      ThemeColor: "_orange",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Без статуса",
-      Lesson: "Copywriting",
-      ThemeColor: "_purple",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Без статуса",
-      Lesson: "Web design",
-      ThemeColor: "_orange",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Нужно сделать",
-      Lesson: "Research",
-      ThemeColor: "_green",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "В работе",
-      Lesson: "Copywriting",
-      ThemeColor: "_purple",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "В работе",
-      Lesson: "Copywriting",
-      ThemeColor: "_purple",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "В работе",
-      Lesson: "Web design",
-      ThemeColor: "_orange",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Тестирование",
-      Lesson: "Research",
-      ThemeColor: "_green",
-      Title: "Новая задача",
-    },
-    {
-      ColumnName: "Готово",
-      Lesson: "Research",
-      ThemeColor: "_green",
-      Title: "Новая задача",
-    },
-  ]
-
+export const Main = ({cards}) => {
     return (
         <main className="main">
           <div className="container">
             <div className="main__block">
               <div className="main__content">
-                <Column ColumnName={"Без статуса"}
+                <Column status={"Без статуса"}
                   cards = {
-                    tasks.filter((task) => task.ColumnName === "Без статуса")
+                    cards.filter((task) => task.status === "Без статуса")
                   }
                 />
-                <Column ColumnName={"Нужно сделать"}
+                <Column status={"Нужно сделать"}
                   cards = {
-                    tasks.filter((task) => task.ColumnName === "Нужно сделать")
+                    cards.filter((task) => task.status === "Нужно сделать")
                   }
                 />
-                <Column ColumnName={"В работе"}
+                <Column status={"В работе"}
                   cards = {
-                    tasks.filter((task) => task.ColumnName === "В работе")
+                    cards.filter((task) => task.status === "В работе")
                   }
                 />
-                <Column ColumnName={"Тестирование"}
+                <Column status={"Тестирование"}
                   cards = {
-                    tasks.filter((task) => task.ColumnName === "Тестирование")
+                    cards.filter((task) => task.status === "Тестирование")
                   }
                 />
-                <Column ColumnName={"Готово"}
+                <Column status={"Готово"}
                   cards = {
-                    tasks.filter((task) => task.ColumnName === "Готово")
+                    cards.filter((task) => task.status === "Готово")
                   }
                 />
               </div>
