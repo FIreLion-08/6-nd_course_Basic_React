@@ -1,31 +1,25 @@
 import { useEffect, useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
-
 import {PopExit} from "./components/PopUps/PopExit/PopExit.jsx";
 import {PopNewCard} from './components/PopUps/PopNewCard/PopNewCard.jsx'
 import {PopBrowse} from './components/PopUps/PopBrowse/PopBrowse.jsx';
 
 import {Header} from './components/Header/Header.jsx';
 import {Main} from './components/Main/Main';
-//
+
+
 import {cardList} from './data.js';
 import { format } from 'date-fns';
-// import {Column} from '../Column/Column.jsx';
+import { GlobalStyled, Wrapper } from './global.styled.js';
+import { ThemeProvider } from 'styled-components';
 
-// const statusList = [
-//   "Без статуса",
-//   "Нужно сделать",
-//   "В работе",
-//   "Тестирование",
-//   "Готово",
-// ];
-
+import {lightTheme, darkTheme} from "./globalTheme.js";
 
 function App() {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [theme, setTheme] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,7 +32,7 @@ function App() {
     const newCard = {
       id: cards[cards.length-1].id + 1,
       status: "Без статуса",
-      theme: "Web design",
+      theme: "Web Design",
       ThemeColor: "_orange",
       title: "Название задачи",
       date: `${format(new Date(), "dd.MM.yy")}`,
@@ -48,19 +42,23 @@ function App() {
   }
 
   return (
-    <>
-      <div className="wrapper">
-        {/* pop-up start*/}
-        <PopExit />
-        <PopNewCard />
-        <PopBrowse />
-        {/* pop-up end*/}
-        <Header addCard={addCard} />
-        {isLoading ? ("Загрузка...") : (
-          <Main cards={cards}/>
-        )}
-      </div>
-    </>
+
+      <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+        <GlobalStyled />
+        <Wrapper>
+          {/* pop-up start*/}
+          <PopExit />
+          <PopNewCard />
+          <PopBrowse />
+          {/* pop-up end*/}
+
+          <Header addCard={addCard} setTheme={setTheme} theme={theme} />
+
+          {isLoading ? ("Загрузка...") : (
+            <Main cards={cards}/>
+          )}
+        </Wrapper>
+      </ThemeProvider>
   )
 }
 
