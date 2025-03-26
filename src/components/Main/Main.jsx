@@ -1,39 +1,37 @@
-import {Column} from '../Column/Column.jsx';
+import * as S from './Main.styled.js'
+import { Container } from '../../global.styled.js'
 
-export const Main = ({cards}) => {
-    return (
-        <main className="main">
-          <div className="container">
-            <div className="main__block">
-              <div className="main__content">
-                <Column status={"Без статуса"}
-                  cards = {
-                    cards.filter((task) => task.status === "Без статуса")
-                  }
-                />
-                <Column status={"Нужно сделать"}
-                  cards = {
-                    cards.filter((task) => task.status === "Нужно сделать")
-                  }
-                />
-                <Column status={"В работе"}
-                  cards = {
-                    cards.filter((task) => task.status === "В работе")
-                  }
-                />
-                <Column status={"Тестирование"}
-                  cards = {
-                    cards.filter((task) => task.status === "Тестирование")
-                  }
-                />
-                <Column status={"Готово"}
-                  cards = {
-                    cards.filter((task) => task.status === "Готово")
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </main>
-    )
+import { Column } from '../Column/Column.jsx'
+
+export const Main = ({ cards }) => {
+  return (
+    <S.StyleMain>
+      <Container>
+        <S.MainBlock>
+          <S.StyledMainContenet>
+            <Column
+              status={'Без статуса'}
+              cards={cards.filter((task) => task.status === 'Без статуса')}
+            />
+            <Column
+              status={'Нужно сделать'}
+              cards={cards.filter((task) => task.status === 'Нужно сделать')}
+            />
+            <Column
+              status={'В работе'}
+              cards={cards.filter((task) => task.status === 'В работе')}
+            />
+            <Column
+              status={'Тестирование'}
+              cards={cards.filter((task) => task.status === 'Тестирование')}
+            />
+            <Column
+              status={'Готово'}
+              cards={cards.filter((task) => task.status === 'Готово')}
+            />
+          </S.StyledMainContenet>
+        </S.MainBlock>
+      </Container>
+    </S.StyleMain>
+  )
 }
