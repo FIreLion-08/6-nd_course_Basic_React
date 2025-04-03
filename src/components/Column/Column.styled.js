@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+
+import styled from "styled-components";
 
 export const MainColumn = styled.div`
   width: 20%;
   margin: 0 auto;
   display: block;
-`
+`;
 
 export const ColumnTitle = styled.div`
   padding: 0 10px;
@@ -20,14 +21,14 @@ export const ColumnTitle = styled.div`
   text-transform: uppercase;
 
   p {
-    color: #94a6be;
+    color: #94A6BE;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
     display: flex;
   }
-`
+`;
 
 export const StyledCard = styled.div`
   width: 100%;
@@ -39,4 +40,4 @@ export const StyledCard = styled.div`
     display: flex;
     overflow-y: auto;
   }
-`
+`;

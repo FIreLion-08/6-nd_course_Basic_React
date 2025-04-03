@@ -1,19 +1,33 @@
-import styled from 'styled-components'
-import { topicStyles } from '../../lib/topic.js'
+import styled, { keyframes } from "styled-components";
 
-import { StyledCard } from '../Column/Column.styled'
+import { StyledCard } from "../Column/Column.styled";
+
+import { topicStyles } from "../../lib/topic.js";
+// import { colorTheme } from "../../lib/global.styled.js";
+
+
+const cardAnimation = keyframes`
+0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: auto;
+    opacity: 1;
+  }
+`;
 
 export const CardItem = styled.div`
   padding: 5px;
-  animation-name: card-animation;
+  animation-name: ${cardAnimation};
   animation-duration: 500ms;
   animation-timing-function: linear;
-`
+`;
 
 export const CardsCard = styled(StyledCard)`
   width: 220px;
   height: 130px;
-  background-color: #ffffff;
+  background-color: ${({theme})=> theme.primary};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -24,7 +38,7 @@ export const CardsCard = styled(StyledCard)`
   @media screen and (max-width: 1200px) {
     width: 220px;
     height: 130px;
-    background-color: #ffffff;
+    background-color: ${({theme})=> theme.primary};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -32,7 +46,7 @@ export const CardsCard = styled(StyledCard)`
     justify-content: stretch;
     padding: 15px 13px 19px;
   }
-`
+`;
 export const CardGroup = styled.div`
   width: 100%;
   height: 20px;
@@ -40,21 +54,26 @@ export const CardGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
+
+// ${(props)=>colorTheme};
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-  ${(props) => topicStyles[props.$color]};
-`
+  ${(props)=>topicStyles[props.$color]};
+`;
+
+
 
 export const CardName = styled.p`
   font-size: 10px;
   font-weight: 600;
   line-height: 10px;
-`
+
+`;
 
 export const CardBtn = styled.div`
   width: 24px;
@@ -63,13 +82,13 @@ export const CardBtn = styled.div`
   align-items: center;
   justify-content: space-around;
   padding: 2px;
-`
+`;
 export const CardBtnDiv = styled(CardBtn)`
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background-color: #94a6be;
-`
+`;
 
 export const CardContent = styled.div`
   height: 64px;
@@ -77,15 +96,15 @@ export const CardContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-`
+`;
 
 export const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: #000000;
+  color: ${({theme})=> theme.text};
   margin-bottom: 10px;
-`
+`;
 
 export const CardDate = styled.div`
   /* Frame 1511838628 */
@@ -114,7 +133,9 @@ export const CardDate = styled.div`
     margin-left: 6px;
     font-size: 10px;
     line-height: 13px;
-    color: #94a6be;
+    color: #94A6BE;
     letter-spacing: 0.2px;
   }
-`
+
+
+`;

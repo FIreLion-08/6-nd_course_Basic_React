@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyleMain = styled.main`
   width: 100%;
   background-color: #eaeef6;
-  background-color: ${({ theme }) => theme.body};
-`
+  background-color: ${({theme})=>theme.body};
+`;
 
 export const MainBlock = styled.div`
   width: 100%;
@@ -16,13 +16,14 @@ export const MainBlock = styled.div`
     margin: 0 auto;
     padding: 40px 0 64px;
   }
-`
+`;
 
 export const StyledMainContenet = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
 
   @media screen and (max-width: 1200px) {
     display: block;
   }
-`
+`;

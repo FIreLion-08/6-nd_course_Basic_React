@@ -1,12 +1,10 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 
 export const GlobalStyled = createGlobalStyle `
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -95,27 +93,6 @@ body {
   color: ${({theme})=> theme.text};
   background-color: ${({theme})=> theme.body};
 }
-
-
-// ._hover01:hover {
-//     background-color: #33399b;
-// }
-
-// ._hover02:hover, .header__user:hover {
-//     color: #33399b;
-// }
-// ._hover02:hover::after, .header__user:hover::after {
-//     border-left-color: #33399b;
-//     border-bottom-color: #33399b;
-// }
-
-// ._hover03:hover {
-//     background-color: #33399b;
-//     color: #FFFFFF;
-// }
-// ._hover03:hover a {
-//     color: #FFFFFF;
-// }
 `;
 
 export const Wrapper = styled.div `
@@ -123,21 +100,21 @@ export const Wrapper = styled.div `
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-    background-color: ${({theme})=>theme.body};
+    /* background-color: #F1F1F1; */
 `;
 
 // Добавление смены темы
 export const Container = styled.div`
 max-width: 1260px;
 width: 100%;
-padding: 0 16px;
+margin: 0 auto;
 background-color: ${(theme) => theme};
 
 background-color: ${({theme})=>theme.body};
 
 @media screen and (max-width: 495px) {
       width: 100%;
-      padding: 0 16px;
+      /* padding: 0 16px;*/
 }
 `;
 
@@ -162,3 +139,64 @@ export const Hover3 = (elem) => styled[elem] `
         }
     }
 `;
+
+// export const Hover1 = () => css`
+//     &:hover {
+//         background-color: #33399b;
+//     }
+// `;
+// export const Hover2 = () => css`
+//     &:hover {
+//         color: #33399b;
+//     }
+// `;
+
+// export const Hover3 = () => css`
+//     &:hover {
+//         background-color: #33399b;
+//         color: #FFFFFF;
+//         a {
+//             color: #FFFFFF;
+//         }
+//     }
+// `;
+
+
+// // Не работает !!!
+const orange = css`
+    background-color:#FFE4C2;
+    color: #FF6D00;
+`
+const green = css`
+    background-color:#B4FDD1;
+    color: #06B16E;
+`
+const purple = css`
+    background-color:#E9D4FF;
+    color: #9A48F1;
+`
+
+export const colorTheme = (color) => css`
+    ${color=== 'orange' && orange}
+    ${color=== 'green' && green}
+    ${color=== 'purple' && purple}
+`
+
+// export const BtnBg = css`
+//   border-radius: 4px;
+//   background: #565eef;
+//   border: none;
+//   outline: none;
+//   color: #ffffff;
+//   margin-right: 8px;
+//   padding: 10px 14px 10px 14px;
+//   font-weight: 500;
+
+//   a {
+//     color: #ffffff;
+//   }
+
+//   &:hover {
+//     background-color: #33399b;
+//   }
+// `
