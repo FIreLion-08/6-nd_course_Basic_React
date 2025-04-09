@@ -25,13 +25,13 @@ export const HeaderBlock = styled.div`
 
 export const HeaderLogoImg = styled.img`
   width: 85px;
-  height: 30px;
+  height: 38px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("${({theme})=>theme.logo}");
-  border-color: none !important; /* Убираем рамку с использованием !important */
-  display: block; /* Убираем возможные отступы */
+  /* border-color: none !important; /* Убираем рамку с использованием !important */
+  /* display: block; /* Убираем возможные отступы */
 `;
 
 export const HeaderNav = styled.nav`

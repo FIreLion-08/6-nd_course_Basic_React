@@ -5,7 +5,7 @@ import * as S from './Header.styled.js'
 import { Container } from '../../lib/global.styled.js'
 import { routesPath } from '../../lib/routesPath.js'
 
-export const Header = ({ addCard, setTheme, theme }) => {
+export const Header = ({ addCard, setTheme, theme, isAuth }) => {
     // Пункт_№1: Модальное окно
     const [isOpened, setIsOpened] = useState(false)
 
@@ -28,15 +28,14 @@ export const Header = ({ addCard, setTheme, theme }) => {
                     </div>
                     {/* <div>
                         <a href="" target="_self">
-                            <S.HeaderLogoImg src="/logo.png" alt="logo" />
+                            <S.HeaderLogoImg src="logo.png" alt="logo" />
                         </a>
                     </div>
                     <div className="header__logo _dark">
                         <a href="" target="_self">
-                            <S.HeaderLogoImg src="/logo_dark.png" alt="logo" />
+                            <S.HeaderLogoImg src="logo_dark.png" alt="logo" />
                         </a>
                     </div> */}
-
                     <S.HeaderNav>
                         <S.HeaderBtnMainNew id="btnMainNew">
                             <S.HeaderBtnMainNewLink
@@ -47,16 +46,16 @@ export const Header = ({ addCard, setTheme, theme }) => {
                             </S.HeaderBtnMainNewLink>
                         </S.HeaderBtnMainNew>
                         <S.HeaderUser onClick={openModal}>
-                            Ivan Ivanov
+                            {isAuth.name}
                         </S.HeaderUser>
                         {isOpened && (
                             <S.HeaderUserSet id="user-set-target">
                                 {/* <a href="">x</a> */}
                                 <S.HeaderUserSetName>
-                                    Ivan Ivanov
+                                    {isAuth.name}
                                 </S.HeaderUserSetName>
                                 <S.HeaderUserSetMail>
-                                    ivan.ivanov@gmail.com
+                                    {isAuth.login}
                                 </S.HeaderUserSetMail>
                                 <S.HeaderUserSetTheme>
                                     <p>Темная тема</p>

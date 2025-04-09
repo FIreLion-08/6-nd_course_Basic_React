@@ -11,10 +11,10 @@ export const Card = ({card}) => {
       <S.CardItem>
         <S.CardsCard>
           <S.CardGroup>
-            <S.CardTheme $color={topicColor[card.theme]}>
-              <S.CardName>{card.theme}</S.CardName>
+            <S.CardTheme $color={topicColor[card.topic]}>
+              <S.CardName>{card.topic}</S.CardName>
             </S.CardTheme>
-            <Link to = {`/card/${card.id}`} >
+            <Link to = {`/card/${card._id}`} >
               <S.CardBtn>
                 <S.CardBtnDiv />
                 <S.CardBtnDiv />
@@ -23,7 +23,7 @@ export const Card = ({card}) => {
             </Link>
           </S.CardGroup>
           <S.CardContent>
-            <Link to={`card/${card.id}`}>
+            <Link to={`card/${card._id}`}>
               <S.CardTitle>{card.title}</S.CardTitle>
             </Link>
             <S.CardDate>

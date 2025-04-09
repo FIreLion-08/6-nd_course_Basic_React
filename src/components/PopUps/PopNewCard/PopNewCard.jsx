@@ -1,5 +1,5 @@
 import { Calendar } from "../../Calendar/Calendar"
-import * as S from "./PopNewCard.styled.js"
+import * as S from "./PopNewCard.styled"
 
 export const PopNewCard = () => {
     return (
