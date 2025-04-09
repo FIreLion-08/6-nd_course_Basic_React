@@ -62,9 +62,9 @@ export const MainPage = ({setTheme, theme, isAuth}) => {
                 setTheme={setTheme}
                 theme={theme}
             />
-            {errorMsg ? <p>${errorMsg}</p> : (
-                isLoading ? ("Загрузка...") : (<Main errorMsg={errorMsg}  cards={cards}/>)
-            )}
+            {errorMsg ? (<p>{errorMsg}</p>) : 
+                isLoading ? ("Загрузка...") : (<Main errorMsg={errorMsg}  cards={cards}/>
+      )}
 
         </Wrapper>
     )
