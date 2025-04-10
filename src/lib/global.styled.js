@@ -100,7 +100,8 @@ export const Wrapper = styled.div `
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-    background-color: #F1F1F1;
+    
+    /* background-color: #F1F1F1; */
 `;
 
 // Добавление смены темы

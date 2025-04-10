@@ -21,8 +21,8 @@ export const Header = ({ addCard, setTheme, theme, isAuth }) => {
                     <div>
                         <Link to={routesPath.MAIN}>
                             <S.HeaderLogoImg
-                            // src="public/logo.png"
-                            // alt="logo"
+                            src="logo.png"
+                            alt="logo"
                             />
                         </Link>
                     </div>
