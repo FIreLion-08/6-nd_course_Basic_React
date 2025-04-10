@@ -131,15 +131,15 @@ export const Hover2 = (elem) => styled[elem] `
     }
 `;
 
-export const Hover3 = (elem) => styled[elem] `
-    &:hover {
-        background-color: #33399b;
-        color: #FFFFFF;
-        a {
-            color: #FFFFFF;
-        }
-    }
-`;
+// export const Hover3 = (elem) => styled[elem] `
+//     &:hover {
+//         background-color: #33399b;
+//         color: #FFFFFF;
+//         a {
+//             color: #FFFFFF;
+//         }
+//     }
+// `;
 
 // export const Hover1 = () => css`
 //     &:hover {
@@ -152,15 +152,15 @@ export const Hover3 = (elem) => styled[elem] `
 //     }
 // `;
 
-// export const Hover3 = () => css`
-//     &:hover {
-//         background-color: #33399b;
-//         color: #FFFFFF;
-//         a {
-//             color: #FFFFFF;
-//         }
-//     }
-// `;
+export const Hover3 = () => css`
+    &:hover {
+        background-color: #33399b;
+        color: #FFFFFF;
+        a {
+            color: #FFFFFF;
+        }
+    }
+`;
 
 
 // // Не работает !!!

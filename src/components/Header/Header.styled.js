@@ -177,12 +177,6 @@ export const HeaderExit = styled(Link)`
     padding: 10px 14px 10px 14px;
     margin: 34px 0px;
     color: ${({ theme }) => theme.text2};
-    
-    &:hover {
-        background-color: #33399b;
-        color: #FFFFFF;
-        a {
-            color: #FFFFFF;
-        }
-    }
+
+    ${Hover3};
 `
