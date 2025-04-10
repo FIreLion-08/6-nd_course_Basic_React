@@ -39,6 +39,11 @@ export async function postTodo({token, text}) {
 
 //РЕГИСТРАЦИЯ
 export const register = ({ name, login, password }) => {
+
+  if (name.length < 2 || login.length < 2 || password.length < 2) {
+    throw new Error("Имя, логин и пароль должны быть длиной минимум 2 символа.");
+  }
+
   return fetch(userHost, {
     method: "POST",
     body: JSON.stringify({
@@ -48,7 +53,14 @@ export const register = ({ name, login, password }) => {
     }),
   }).then((response) => {
     if (response.status === 400) {
-      throw new Error("Такой пользователь уже существует");
+      // Разбор текста ошибки для более точного сообщения
+      return response.json().then(data => {
+        if (data.error === "User already exists") {
+          throw new Error("Такой пользователь уже существует.");
+        } else {
+          throw new Error("Некорректные данные ввода.");
+        }
+      });
     }
     if (response.status === 500) {
       throw new Error("Ошибка сервера");
