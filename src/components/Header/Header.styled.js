@@ -169,11 +169,20 @@ export const HeaderUserSetTheme = styled.div`
     }
 `
 
-export const HeaderExit = styled(Hover3('a'))`
+// export const HeaderExit = styled(Hover3('a'))`
+export const HeaderExit = styled(Link)`
     box-sizing: border-box;
     border: 1px solid ${({ theme }) => theme.text2};
     border-radius: 4px;
     padding: 10px 14px 10px 14px;
     margin: 34px 0px;
     color: ${({ theme }) => theme.text2};
+    
+    &:hover {
+        background-color: #33399b;
+        color: #FFFFFF;
+        a {
+            color: #FFFFFF;
+        }
+    }
 `

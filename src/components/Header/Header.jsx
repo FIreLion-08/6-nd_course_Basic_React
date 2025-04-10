@@ -66,8 +66,8 @@ export const Header = ({ addCard, setTheme, theme, isAuth }) => {
                                         name="checkbox"
                                     />
                                 </S.HeaderUserSetTheme>
-                                <S.HeaderExit type="button">
-                                    <Link to={routesPath.EXIT}>Выйти</Link>
+                                <S.HeaderExit to={routesPath.EXIT}>
+                                    Выйти
                                 </S.HeaderExit>
                             </S.HeaderUserSet>
                         )}
