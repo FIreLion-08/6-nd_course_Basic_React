@@ -10,7 +10,7 @@ export const  PopExit = ({ setIsAuth }) => {
   const navigate = useNavigate ();
 
   const logOut = () => {
-    setIsAuth(false);
+    setIsAuth(null);
     navigate(routesPath.LOGIN);
   }
 

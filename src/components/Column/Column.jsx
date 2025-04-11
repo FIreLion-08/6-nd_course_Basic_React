@@ -9,7 +9,7 @@ export const  Column = ({status, cards}) => {
             <p>{status}</p>
           </S.ColumnTitle>
           <S.StyledCard>
-            {cards.map(el => <Card key={el.id} card={el} />)}
+            {cards.map(el => <Card key={el._id} card={el} />)}
           </S.StyledCard>
         </div>
     )
