@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { Wrapper } from "../../lib/global.styled";
-import { routesPath } from "../../lib/routesPath";
+import { Link } from 'react-router-dom'
+import { Wrapper } from '../../lib/global.styled'
+import { routesPath } from '../../lib/routesPath'
 
 export const NotFound = () => {
     return (
@@ -11,6 +11,5 @@ export const NotFound = () => {
                 <Link to={routesPath.MAIN}>Перейти на главную страницу</Link>
             </button>
         </Wrapper>
-
-    );
+    )
 }

@@ -100,36 +100,38 @@ export const Wrapper = styled.div `
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-    
     /* background-color: #F1F1F1; */
+    background-color: ${({theme})=>theme.body};
 `;
 
 // Добавление смены темы
+//max-width: 1260px;
 export const Container = styled.div`
 max-width: 1260px;
 width: 100%;
 margin: 0 auto;
-background-color: ${(theme) => theme};
+/* padding: 0 30px; */
+
 
 background-color: ${({theme})=>theme.body};
 
 @media screen and (max-width: 495px) {
       width: 100%;
-      /* padding: 0 16px;*/
+      /* padding: 0 16px; */
 }
 `;
 
 
-export const Hover1 = (block) => styled[block] `
-    &:hover {
-        background-color: #33399b;
-    }
-`;
-export const Hover2 = (elem) => styled[elem] `
-    &:hover {
-        color: #33399b;
-    }
-`;
+// export const Hover1 = (block) => styled[block] `
+//     &:hover {
+//         background-color: #33399b;
+//     }
+// `;
+// export const Hover2 = (elem) => styled[elem] `
+//     &:hover {
+//         color: #33399b;
+//     }
+// `;
 
 // export const Hover3 = (elem) => styled[elem] `
 //     &:hover {
@@ -141,21 +143,22 @@ export const Hover2 = (elem) => styled[elem] `
 //     }
 // `;
 
-// export const Hover1 = () => css`
-//     &:hover {
-//         background-color: #33399b;
-//     }
-// `;
-// export const Hover2 = () => css`
-//     &:hover {
-//         color: #33399b;
-//     }
-// `;
+export const Hover1 =  css`
+    &:hover {
+        background-color: #33399b;
+    }
+`;
+export const Hover2 = css`
+    &:hover {
+        color: #33399b;
+    }
+`;
 
-export const Hover3 = () => css`
+export const Hover3 = css`
     &:hover {
         background-color: #33399b;
         color: #FFFFFF;
+        border: 0.7px solid var(--palette-navy-60, #33399b);
         a {
             color: #FFFFFF;
         }
@@ -165,22 +168,22 @@ export const Hover3 = () => css`
 
 // // Не работает !!!
 const orange = css`
-    background-color:#FFE4C2;
-    color: #FF6D00;
+    background-color:${({theme})=> theme.orangeBg};
+    color: ${({theme})=> theme.orangeText};
 `
 const green = css`
-    background-color:#B4FDD1;
-    color: #06B16E;
+    background-color:${({theme})=> theme.greenBg};
+    color: ${({theme})=> theme.greenText};
 `
 const purple = css`
-    background-color:#E9D4FF;
-    color: #9A48F1;
+    background-color:${({theme})=> theme.purpleBg};
+    color: ${({theme})=> theme.purpleText};
 `
 
 export const colorTheme = (color) => css`
-    ${color=== 'orange' && orange}
-    ${color=== 'green' && green}
-    ${color=== 'purple' && purple}
+    ${color === '_orange' && orange}
+    ${color === '_green' && green}
+    ${color === '_purple' && purple}
 `
 
 // export const BtnBg = css`

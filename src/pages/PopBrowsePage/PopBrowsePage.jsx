@@ -1,8 +1,5 @@
-import { PopBrowse } from "../../components/PopUps/PopBrowse/PopBrowse.jsx";
+import { PopBrowse } from '../../components/PopUps/PopBrowse/PopBrowse.jsx'
 
 export const PopBrowsePage = () => {
-    return (
-        <PopBrowse />
-    )
-
+    return <PopBrowse />
 }

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export const Header = styled.header`
     width: 100%;
     margin: 0 auto;
-    /* background-color: #ffffff; */
     background-color: ${({ theme }) => theme.primary};
 `
 
@@ -24,7 +23,6 @@ export const HeaderBlock = styled.div`
 
 export const HeaderLogoImg = styled.img`
     width: 85px;
-    height: 28px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,7 +41,8 @@ export const HeaderNav = styled.nav`
 
 //
 // background-color: ${({theme})=>theme.body};
-export const HeaderBtnMainNew = styled(Hover1('button'))`
+// export const HeaderBtnMainNew=styled(Hover1('button')) `
+export const HeaderBtnMainNew = styled.button`
     width: 178px;
     height: 30px;
     border-radius: 4px;
@@ -63,13 +62,16 @@ export const HeaderBtnMainNew = styled(Hover1('button'))`
     &:hover {
         background-color: #33399b;
     }
+
+    ${Hover1}
 `
 
 export const HeaderBtnMainNewLink = styled.a`
     color: #ffffff;
 `
 
-export const HeaderUser = styled(Hover2('a'))`
+// export const HeaderUser=styled(Hover2('a')) `
+export const HeaderUser = styled.a`
     height: 20px;
     display: flex;
     flex-wrap: nowrap;
@@ -78,6 +80,9 @@ export const HeaderUser = styled(Hover2('a'))`
     font-size: 14px;
     line-height: 20px;
     color: ${({ theme }) => theme.text2};
+
+    ${Hover2}
+
     &::after {
         content: '';
         display: block;
@@ -177,6 +182,5 @@ export const HeaderExit = styled(Link)`
     padding: 10px 14px 10px 14px;
     margin: 34px 0px;
     color: ${({ theme }) => theme.text2};
-
     ${Hover3};
 `

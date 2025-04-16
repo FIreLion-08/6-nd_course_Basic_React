@@ -4,8 +4,8 @@ export const lightTheme = {
     text: '#000',
     text2: '#565EEF',
     // Другие стили светлой темы
-    isDark: false
-};
+    isDark: false,
+}
 
 export const darkTheme = {
     body: '#151419',
@@ -13,6 +13,5 @@ export const darkTheme = {
     text: '#FFF',
     tetx2: '#FFF',
     // Другие стили темной темы
-    isDark: true
-
-};
+    isDark: true,
+}

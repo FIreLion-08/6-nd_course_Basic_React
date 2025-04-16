@@ -1,187 +1,249 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate, Navigate } from 'react-router-dom'
+import { useState } from 'react'
+// import { format } from 'date-fns';
+// import ru from "date-fns/locale/ru";
 
-import { routesPath } from "../../../lib/routesPath";
-import * as S from "./PopBrowse.styled";
+import { routesPath } from '../../../lib/routesPath'
+import { useCards } from '../../../hooks/useCards.js'
+import { useUser } from '../../../hooks/useUser'
+import { CardName } from '../../Card/Card.styled.js'
+import { topicColor } from '../../../lib/topic.js'
+
+import { deleteTodo, putTodo } from '../../../api/MainPageApi.js'
+
+import * as S from './PopBrowse.styled'
+import { Calendar } from '../../Calendar/Calendar.jsx'
 
 export const PopBrowse = () => {
-  const { cardId } = useParams();
-  return (
-    <S.PopBrouwseStyled id="popBrowse">
-      <S.PopBrouwseContainer>
-        <S.PopBrouwseBlock>
-          <S.PopBrouwseContent>
-            <S.PopBrouwseTopBlock>
-              <S.PopBrouwseTtl>Название задачи: {cardId}</S.PopBrouwseTtl>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </S.PopBrouwseTopBlock>
-            <div className="pop-browse__status status">
-              <p className="status__p subttl">Статус</p>
-              <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
-              </div>
-            </div>
-            <S.PopBrouwseWrap>
-              <form
-                className="pop-browse__form form-browse"
-                id="formBrowseCard"
-                action="#"
-              >
-                <div className="form-browse__block">
-                  <label htmlFor="textArea01" className="subttl">
-                    Описание задачи
-                  </label>
-                  <textarea
-                    className="form-browse__area"
-                    name="text"
-                    id="textArea01"
-                    readOnly=""
-                    placeholder="Введите описание задачи..."
-                    defaultValue={""}
-                  />
-                </div>
-              </form>
-              <div className="pop-new-card__calendar calendar">
-                <p className="calendar__ttl subttl">Даты</p>
-                <div className="calendar__block">
-                  <div className="calendar__nav">
-                    <div className="calendar__month">Сентябрь 2023</div>
-                    <div className="nav__actions">
-                      <div className="nav__action" data-action="prev">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={6}
-                          height={11}
-                          viewBox="0 0 6 11"
-                        >
-                          <path d="M5.72945 1.95273C6.09018 1.62041 6.09018 1.0833 5.72945 0.750969C5.36622 0.416344 4.7754 0.416344 4.41218 0.750969L0.528487 4.32883C-0.176162 4.97799 -0.176162 6.02201 0.528487 6.67117L4.41217 10.249C4.7754 10.5837 5.36622 10.5837 5.72945 10.249C6.09018 9.9167 6.09018 9.37959 5.72945 9.04727L1.87897 5.5L5.72945 1.95273Z" />
-                        </svg>
-                      </div>
-                      <div className="nav__action" data-action="next">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={6}
-                          height={11}
-                          viewBox="0 0 6 11"
-                        >
-                          <path d="M0.27055 9.04727C-0.0901833 9.37959 -0.0901832 9.9167 0.27055 10.249C0.633779 10.5837 1.2246 10.5837 1.58783 10.249L5.47151 6.67117C6.17616 6.02201 6.17616 4.97799 5.47151 4.32883L1.58782 0.75097C1.2246 0.416344 0.633778 0.416344 0.270549 0.75097C-0.0901831 1.0833 -0.090184 1.62041 0.270549 1.95273L4.12103 5.5L0.27055 9.04727Z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="calendar__content">
-                    <div className="calendar__days-names">
-                      <div className="calendar__day-name">пн</div>
-                      <div className="calendar__day-name">вт</div>
-                      <div className="calendar__day-name">ср</div>
-                      <div className="calendar__day-name">чт</div>
-                      <div className="calendar__day-name">пт</div>
-                      <div className="calendar__day-name -weekend-">сб</div>
-                      <div className="calendar__day-name -weekend-">вс</div>
-                    </div>
-                    <div className="calendar__cells">
-                      <div className="calendar__cell _other-month">28</div>
-                      <div className="calendar__cell _other-month">29</div>
-                      <div className="calendar__cell _other-month">30</div>
-                      <div className="calendar__cell _cell-day">31</div>
-                      <div className="calendar__cell _cell-day">1</div>
-                      <div className="calendar__cell _cell-day _weekend">2</div>
-                      <div className="calendar__cell _cell-day _weekend">3</div>
-                      <div className="calendar__cell _cell-day">4</div>
-                      <div className="calendar__cell _cell-day">5</div>
-                      <div className="calendar__cell _cell-day ">6</div>
-                      <div className="calendar__cell _cell-day">7</div>
-                      <div className="calendar__cell _cell-day _current">8</div>
-                      <div className="calendar__cell _cell-day _weekend _active-day">
-                        9
-                      </div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        10
-                      </div>
-                      <div className="calendar__cell _cell-day">11</div>
-                      <div className="calendar__cell _cell-day">12</div>
-                      <div className="calendar__cell _cell-day">13</div>
-                      <div className="calendar__cell _cell-day">14</div>
-                      <div className="calendar__cell _cell-day">15</div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        16
-                      </div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        17
-                      </div>
-                      <div className="calendar__cell _cell-day">18</div>
-                      <div className="calendar__cell _cell-day">19</div>
-                      <div className="calendar__cell _cell-day">20</div>
-                      <div className="calendar__cell _cell-day">21</div>
-                      <div className="calendar__cell _cell-day">22</div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        23
-                      </div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        24
-                      </div>
-                      <div className="calendar__cell _cell-day">25</div>
-                      <div className="calendar__cell _cell-day">26</div>
-                      <div className="calendar__cell _cell-day">27</div>
-                      <div className="calendar__cell _cell-day">28</div>
-                      <div className="calendar__cell _cell-day">29</div>
-                      <div className="calendar__cell _cell-day _weekend">
-                        30
-                      </div>
-                      <div className="calendar__cell _other-month _weekend">
-                        1
-                      </div>
-                    </div>
-                  </div>
-                  <input
-                    type="hidden"
-                    id="datepick_value"
-                    defaultValue="08.09.2023"
-                  />
-                  <div className="calendar__period">
-                    <p className="calendar__p date-end">
-                      Срок исполнения:{" "}
-                      <span className="date-control">09.09.23</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </S.PopBrouwseWrap>
-            <S.PopBrouwseBtnBrouwse>
-              <div className="btn-group">
-                <Link to="#"><S.BtnBor>Редактировать задачу</S.BtnBor></Link>
-                <Link to="#"><S.BtnBor>Удалить задачу</S.BtnBor></Link>
-              </div>
-              <S.BtnBg>
-                <Link to={routesPath.MAIN}>Закрыть</Link>
-              </S.BtnBg>
-            </S.PopBrouwseBtnBrouwse>
-            <S.PopBrowseBtnEdit>
-              <S.BtnGroup>
-                <Link to="#"><S.BtnBg>Сохранить</S.BtnBg></Link>
-                <Link to="#"><S.BtnBor>Отменить</S.BtnBor></Link>
-                <Link to="#"><S.BtnBor id="btnDelete">Удалить задачу</S.BtnBor></Link>
-              </S.BtnGroup>
-              <Link to="#"><S.BtnBg>Закрыть</S.BtnBg></Link>
-            </S.PopBrowseBtnEdit>
-          </S.PopBrouwseContent>
-        </S.PopBrouwseBlock>
-      </S.PopBrouwseContainer>
-    </S.PopBrouwseStyled>
-  );
+    const { cardId } = useParams()
+    const { user } = useUser()
+    const { cards, setCards } = useCards()
+    const navigate = useNavigate()
+
+    const [isEdited, setIsEdited] = useState(false)
+    let openedCard = cards.find((card) => card._id === cardId)
+    const [
+        selectedDate,
+        // setSelectedDate
+    ] = useState(openedCard?.date)
+
+    const [editCard, setEditCard] = useState({
+        title: openedCard?.title,
+        description: openedCard?.description,
+        topic: openedCard?.topic,
+        status: openedCard?.status,
+        date: openedCard?.date,
+    })
+    console.log(editCard)
+
+    const deleteCard = () => {
+        deleteTodo({ token: user.token, id: cardId })
+            .then((newCard) => {
+                setCards(newCard.tasks)
+                navigate(routesPath.MAIN)
+            })
+            .catch((error) => {
+                console.log(error)
+                alert(error)
+            })
+    }
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        const taskData = {
+            ...editCard,
+            date: selectedDate,
+        }
+        console.log(taskData)
+        putTodo({ token: user.token, id: cardId, taskData: taskData })
+            .then((newCard) => {
+                console.log(newCard)
+                setCards(newCard.tasks)
+                navigate(routesPath.MAIN)
+            })
+            .catch((error) => {
+                console.log(error)
+                alert(error)
+            })
+    }
+
+    const onChangeInput = (e) => {
+        const { name, value } = e.target
+        setEditCard({
+            ...editCard,
+            [name]: value,
+        })
+    }
+
+    if (!openedCard) {
+        return <Navigate to={routesPath.MAIN} />
+    }
+
+    return (
+        <S.PopBrouwseStyled id="popBrowse">
+            <S.PopBrouwseContainer>
+                <S.PopBrouwseBlock>
+                    <S.PopBrouwseContent>
+                        <S.PopBrouwseTopBlock>
+                            <S.PopBrouwseTitle>
+                                Название задачи: {openedCard.title}
+                            </S.PopBrouwseTitle>
+                            <S.PopBroweColor
+                                $themeColor={topicColor[openedCard.topic]}
+                            >
+                                <CardName
+                                    $themeColor={topicColor[openedCard.topic]}
+                                >
+                                    {openedCard.topic}
+                                </CardName>
+                            </S.PopBroweColor>
+                        </S.PopBrouwseTopBlock>
+                        <S.PopBrowseStatus>
+                            <S.StatusPsubTtlP>
+                                Статус: {openedCard.status}
+                            </S.StatusPsubTtlP>
+                            {isEdited && (
+                                <S.StatusThemesDiv>
+                                    <S.OpenedCardTheme
+                                        type="radio"
+                                        id="radio1"
+                                        name="status"
+                                        value="Без статуса"
+                                        onChange={onChangeInput}
+                                    />
+                                    <S.StatusThemeLabel htmlFor="radio1">
+                                        Без статуса
+                                    </S.StatusThemeLabel>
+
+                                    <S.OpenedCardTheme
+                                        type="radio"
+                                        id="radio2"
+                                        name="status"
+                                        value="Нужно сделать"
+                                        onChange={onChangeInput}
+                                    />
+                                    <S.StatusThemeLabel htmlFor="radio2">
+                                        Нужно сделать
+                                    </S.StatusThemeLabel>
+
+                                    <S.OpenedCardTheme
+                                        type="radio"
+                                        id="radio3"
+                                        name="status"
+                                        value="В работе"
+                                        onChange={onChangeInput}
+                                    />
+                                    <S.StatusThemeLabel htmlFor="radio3">
+                                        В работе
+                                    </S.StatusThemeLabel>
+
+                                    <S.OpenedCardTheme
+                                        type="radio"
+                                        id="radio4"
+                                        name="status"
+                                        value="Тестирование"
+                                        onChange={onChangeInput}
+                                    />
+                                    <S.StatusThemeLabel htmlFor="radio4">
+                                        Тестирование
+                                    </S.StatusThemeLabel>
+
+                                    <S.OpenedCardTheme
+                                        type="radio"
+                                        id="radio5"
+                                        name="status"
+                                        value="Готово"
+                                        onChange={onChangeInput}
+                                    />
+                                    <S.StatusThemeLabel htmlFor="radio5">
+                                        Готово
+                                    </S.StatusThemeLabel>
+                                </S.StatusThemesDiv>
+                            )}
+                        </S.PopBrowseStatus>
+                        <S.PopBrouwseWrap>
+                            <S.PopBrowseForm id="formBrowseCard" action="#">
+                                <S.FormBrowseBlock>
+                                    <S.FormBrowseTitle htmlFor="textArea01">
+                                        Описание задачи
+                                    </S.FormBrowseTitle>
+                                    {!isEdited && (
+                                        <S.FormBrowseArea
+                                            onChange={onChangeInput}
+                                            name="description"
+                                            id="textArea01"
+                                            readOnly=""
+                                            placeholder="Введите описание задачи..."
+                                            defaultValue={
+                                                openedCard.description
+                                            }
+                                            disabled={true}
+                                        />
+                                    )}
+                                    {isEdited && (
+                                        <S.FormBrowseArea
+                                            onChange={onChangeInput}
+                                            name="description"
+                                            id="textArea01"
+                                            readOnly=""
+                                            placeholder="Введите описание задачи..."
+                                            defaultValue={
+                                                openedCard.description
+                                            }
+                                            disabled={false}
+                                        />
+                                    )}
+                                </S.FormBrowseBlock>
+                            </S.PopBrowseForm>
+                            <Calendar />
+                        </S.PopBrouwseWrap>
+                        {!isEdited && (
+                            <S.PopBrowseButtonBrowse>
+                                <S.ButtonGroup>
+                                    <S.ButtonChengeDelete
+                                        onClick={() => {
+                                            setIsEdited(!isEdited)
+                                        }}
+                                    >
+                                        Редактировать задачу
+                                    </S.ButtonChengeDelete>
+                                    <S.ButtonChengeDelete onClick={deleteCard}>
+                                        Удалить задачу
+                                    </S.ButtonChengeDelete>
+                                </S.ButtonGroup>
+                                <Link to={routesPath.MAIN}>
+                                    <S.ButtonClose>Закрыть</S.ButtonClose>
+                                </Link>
+                            </S.PopBrowseButtonBrowse>
+                        )}
+                        {isEdited && (
+                            <S.PopBrowseButtonBrowse>
+                                <S.ButtonGroup>
+                                    <S.ButtonChengeDelete
+                                        onClick={handleFormSubmit}
+                                    >
+                                        Сохранить
+                                    </S.ButtonChengeDelete>
+                                    <S.ButtonChengeDelete
+                                        onClick={() => {
+                                            setIsEdited(!isEdited)
+                                        }}
+                                    >
+                                        Отменить
+                                    </S.ButtonChengeDelete>
+
+                                    <S.ButtonChengeDelete onClick={deleteCard}>
+                                        Удалить задачу
+                                    </S.ButtonChengeDelete>
+                                </S.ButtonGroup>
+                                <Link to={routesPath.MAIN}>
+                                    <S.ButtonClose>Закрыть</S.ButtonClose>
+                                </Link>
+                            </S.PopBrowseButtonBrowse>
+                        )}
+                    </S.PopBrouwseContent>
+                </S.PopBrouwseBlock>
+            </S.PopBrouwseContainer>
+        </S.PopBrouwseStyled>
+    )
 }
