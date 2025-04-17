@@ -1,19 +1,33 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react'
 
 import * as S from './LoginPage.styled.js'
 import { Wrapper } from '../../lib/global.styled.js'
 import { routesPath } from '../../lib/routesPath.js'
-import { loginAut } from '../../services/Api.js'
+import { loginAut } from '../../api/AuthApi.js'
+import { UserContext } from '../../context/UserContext.jsx'
 
-export const LoginPage = ({ setIsAuth }) => {
-    const navigate = useNavigate()
+// Входящий параметр
+// export const LoginPage = ({ setIsAuth }) => {
+//   const navigate = useNavigate();
+// }
+
+// Используем Context
+export const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState('')
 
     const [inputValue, setInputValue] = useState({
         login: '',
         password: '',
     })
+
+    // Прировняли объект с Функцией который храниться в userContext.jsx
+    // Обычный вариант:
+    // const valueContext = useContext(useContext);
+    // valueContext({inputValue,[name]:value})
+
+    //Униваерсальный вариант:
+    const { loginContext } = useContext(UserContext)
 
     const onChangeInput = (e) => {
         const { value, name } = e.target //;
@@ -26,12 +40,22 @@ export const LoginPage = ({ setIsAuth }) => {
         if (!login || !password) {
             return setErrorMessage('Заполните все поля')
         }
+        // Входящий параметр responce
         loginAut(inputValue)
             .then((response) => {
                 setErrorMessage('')
-                setIsAuth(response.user) //Данные помещаются из авторизации
-                localStorage.setItem('user', JSON.stringify(response.user))
-                navigate(routesPath.MAIN)
+
+                // Функция Раположена в useContext.jsx
+                // setIsAuth(response.user) //Данные помещаются из авторизации
+                // localStorage.setItem('user', JSON.stringify(response.user))
+                // navigate(routesPath.MAIN)
+
+                //Заменяем на:
+                // Обычный вариант:
+                // valueContext.loginContext(response)
+
+                //Универсальный вариант:
+                loginContext(response)
             })
             .catch((err) => {
                 setErrorMessage(err.message)

@@ -1,18 +1,28 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import * as S from './Header.styled.js'
 import { Container } from '../../lib/global.styled.js'
 import { routesPath } from '../../lib/routesPath.js'
+import { UserContext } from '../../context/UserContext.jsx'
 
-export const Header = ({ addCard, setTheme, theme, isAuth }) => {
+export const Header = ({ setTheme, theme }) => {
     // Пункт_№1: Модальное окно
     const [isOpened, setIsOpened] = useState(false)
+
+    const navigate = useNavigate()
+
+    const { user } = useContext(UserContext)
 
     const openModal = (e) => {
         e.preventDefault()
         setIsOpened((prev) => !prev)
     }
+
+    const addCard = () => {
+        navigate(routesPath.NEW_CARD)
+    }
+
     //
     return (
         <S.Header>
@@ -20,10 +30,7 @@ export const Header = ({ addCard, setTheme, theme, isAuth }) => {
                 <S.HeaderBlock>
                     <div>
                         <Link to={routesPath.MAIN}>
-                            <S.HeaderLogoImg
-                            src="logo.png"
-                            alt="logo"
-                            />
+                            <S.HeaderLogoImg src="logo.png" alt="logo" />
                         </Link>
                     </div>
                     {/* <div>
@@ -37,25 +44,22 @@ export const Header = ({ addCard, setTheme, theme, isAuth }) => {
                         </a>
                     </div> */}
                     <S.HeaderNav>
-                        <S.HeaderBtnMainNew id="btnMainNew">
-                            <S.HeaderBtnMainNewLink
-                                href="#popNewCard"
-                                onClick={addCard}
-                            >
+                        <S.HeaderBtnMainNew id="btnMainNew" onClick={addCard}>
+                            <S.HeaderBtnMainNewLink>
                                 Создать новую задачу
                             </S.HeaderBtnMainNewLink>
                         </S.HeaderBtnMainNew>
                         <S.HeaderUser onClick={openModal}>
-                            {isAuth.name}
+                            {user.name}
                         </S.HeaderUser>
                         {isOpened && (
                             <S.HeaderUserSet id="user-set-target">
                                 {/* <a href="">x</a> */}
                                 <S.HeaderUserSetName>
-                                    {isAuth.name}
+                                    {user.name}
                                 </S.HeaderUserSetName>
                                 <S.HeaderUserSetMail>
-                                    {isAuth.login}
+                                    {user.login}
                                 </S.HeaderUserSetMail>
                                 <S.HeaderUserSetTheme>
                                     <p>Темная тема</p>

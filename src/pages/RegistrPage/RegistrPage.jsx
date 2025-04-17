@@ -4,7 +4,7 @@ import { useState } from 'react'
 import * as S from './RegistrPage.styled.js'
 import { Wrapper } from '../../lib/global.styled.js'
 import { routesPath } from '../../lib/routesPath.js'
-import { register } from '../../services/Api.js'
+import { register } from '../../api/AuthApi.js'
 
 export const RegistrPage = () => {
     const navigate = useNavigate()
